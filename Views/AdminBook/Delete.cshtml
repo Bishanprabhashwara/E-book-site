@@ -1,0 +1,39 @@
+﻿@model WebApplication1.Models.Book
+
+@{ ViewBag.Title = "Delete"; }
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Book</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <!-- Add other fields like Author, Description, Price, Category here -->
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <!-- Display other fields here -->
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+@Html.AntiForgeryToken()
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Delete" class="btn btn-danger" />
+                    </div>
+                </div>}
+</div>
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

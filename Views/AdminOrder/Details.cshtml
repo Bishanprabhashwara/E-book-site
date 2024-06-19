@@ -1,0 +1,26 @@
+﻿@model WebApplication1.Models.Orderbook
+
+@{ ViewBag.Title = "Order Details"; }
+
+<h2>Order Details</h2>
+
+<table class="table">
+    <tr>
+        <td><strong>Order ID:</strong></td>
+        <td>@Model.OrderID</td>
+    </tr>
+    <tr>
+        <td><strong>Customer ID:</strong></td>
+        <td>@Model.CustomerID</td>
+    </tr>
+    <tr>
+        <td><strong>Order Date:</strong></td>
+        <td>@Model.OrderDate.ToShortDateString()</td>
+    </tr>
+    <tr>
+        <td><strong>Total Amount:</strong></td>
+        <td>@Model.TotalAmount.ToString("C")</td>
+    </tr>
+</table>
+
+@Html.ActionLink("Back to List", "Index")

@@ -1,0 +1,62 @@
+﻿@{ ViewBag.Title = "Dashboard"; }
+
+<h2 class="text-center mb-4">Welcome to Your Dashboard</h2>
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="card">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxH2E_OUJnUmO00wfsDeF6kC0eSKNBSTNKbw&s" class="card-img-top" alt="Book Image">
+            <div class="card-body">
+                <h5 class="card-title">Recommended Book</h5>
+                <p class="card-text">Description of recommended book.</p>
+                <button class="btn btn-outline-danger mt-2 like-btn"><i class="bi bi-heart"></i> Like <span class="like-count">0</span></button>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Your Reading Progress</h5>
+                <div class="progress">
+                    <div class="progress-bar bg-success" role="progressbar" style="width: 60%;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">60% Complete</div>
+                </div>
+                <p class="card-text mt-2">Keep up the good work!</p>
+            </div>
+        </div>
+        <div class="card mt-3">
+            <div class="card-body">
+                <h5 class="card-title">Recommended Books</h5>
+                <ul class="list-group">
+                    <li class="list-group-item">Pride and Prejudice</li>
+                    <li class="list-group-item">The Catcher in the Rye</li>
+                    <li class="list-group-item">The Lord of the Rings</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Navigation</h5>
+                <ul class="list-group">
+                    <li class="list-group-item"><a href="@Url.Action("Index", "OrderBook")" class="text-dark">Order Books</a></li>
+                    <li class="list-group-item"><a href="@Url.Action("Search", "Book")" class="text-dark">Search for Book Details</a></li>
+                    <li class="list-group-item"><a href="@Url.Action("Feedback", "Feedback")" class="text-dark">Feedback</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script>
+        // Function to handle like button click
+        $('.like-btn').click(function () {
+            var count = parseInt($(this).find('.like-count').text());
+            $(this).find('.like-count').text(count + 1);
+        });
+    </script>
+}

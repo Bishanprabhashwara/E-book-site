@@ -1,0 +1,29 @@
+﻿@model List<WebApplication1.Models.Customer>
+
+@{ ViewBag.Title = "Manage Customers"; }
+
+<h2>Manage Customers</h2>
+
+<table class="table">
+    <tr>
+        <th>Customer ID</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Created At</th>
+        <th>Action</th>
+    </tr>
+    @foreach (var customer in Model)
+    {
+<tr>
+    <td>@customer.CustomerID</td>
+    <td>@customer.FirstName</td>
+    <td>@customer.LastName</td>
+    <td>@customer.Email</td>
+    <td>@customer.CreatedAt.ToString("yyyy-MM-dd HH:mm:ss")</td>
+    <td>
+        @Html.ActionLink("Details", "Details", new { id = customer.CustomerID }) |
+        @Html.ActionLink("Delete", "Delete", new { id = customer.CustomerID })
+    </td>
+</tr>}
+</table>

@@ -1,0 +1,29 @@
+﻿@model WebApplication1.Models.Customer
+
+@{ ViewBag.Title = "Delete Customer"; }
+
+<h2>Delete Customer</h2>
+
+<div>
+    <h4>Are you sure you want to delete this customer?</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>Customer ID:</dt>
+        <dd>@Model.CustomerID</dd>
+        <dt>First Name:</dt>
+        <dd>@Model.FirstName</dd>
+        <dt>Last Name:</dt>
+        <dd>@Model.LastName</dd>
+        <dt>Email:</dt>
+        <dd>@Model.Email</dd>
+        <dt>Created At:</dt>
+        <dd>@Model.CreatedAt.ToString("yyyy-MM-dd HH:mm:ss")</dd>
+    </dl>
+    @using (Html.BeginForm())
+    {
+@Html.AntiForgeryToken()
+                <div class="form-actions no-color">
+                    <input type="submit" value="Delete" class="btn btn-danger" /> |
+                    @Html.ActionLink("Cancel", "Index")
+                </div>}
+</div>

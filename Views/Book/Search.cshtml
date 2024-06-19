@@ -1,0 +1,44 @@
+﻿@model WebApplication1.Models.BookSearchViewModel
+
+@{ ViewBag.Title = "Search Books"; }
+
+<h2>Search Books</h2>
+
+@using (Html.BeginForm("Search", "Book", FormMethod.Get))
+{
+<div class="form-group">
+    @Html.LabelFor(m => m.SearchTerm)
+    @Html.TextBoxFor(m => m.SearchTerm, new { @class = "form-control" })
+</div>
+                <button type="submit" class="btn btn-primary">Search</button>}
+
+@if (Model.Results != null && Model.Results.Count > 0)
+{
+<h3>Search Results</h3>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Author</th>
+                            <th>Description</th>
+                            <th>Price</th>
+                            <th>Category</th>
+                            <th>Created At</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var book in Model.Results)
+                        {
+        <tr>
+            <td>@book.Title</td>
+            <td>@book.Author</td>
+            <td>@book.Description</td>
+            <td>@book.Price</td>
+            <td>@book.Category</td>
+            <td>@book.CreatedAt</td>
+        </tr>}
+                    </tbody>
+                </table> }
+                            else if (Model.Results != null)
+                            {
+                <p>No books found matching your search criteria.</p>}

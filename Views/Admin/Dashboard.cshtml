@@ -1,0 +1,38 @@
+﻿@{ ViewBag.Title = "Admin Dashboard";
+                Layout = "~/Views/Shared/_Layout.cshtml"; }
+
+<div class="container">
+    <h2>Admin Dashboard</h2>
+    <p>Welcome, @Session["Username"]!</p>
+    <p>This is the admin dashboard where you can manage the application.</p>
+
+    <div class="row">
+        <div class="col-md-4">
+            <h3>Register New Admins</h3>
+            <p>Register new admin users for the application.</p>
+            <p><a class="btn btn-primary" href="@Url.Action("Register", "Admin")">Register Admins &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+            <h3>Manage Books Details</h3>
+            <p>View, add, update, or delete book listings.</p>
+            <p><a class="btn btn-primary" href="@Url.Action("Index", "AdminBook")">Go to Book Management &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+            <h3>Manage Customers</h3>
+            <p>View and manage customer information.</p>
+            <p><a class="btn btn-primary" href="@Url.Action("Index", "AdminCustomer")">Go to Customer Management &raquo;</a></p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <h3>Manage Orders</h3>
+            <p>View and manage customer orders.</p>
+            <p><a class="btn btn-primary" href="@Url.Action("Index", "AdminOrder")">Go to Order Management &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+            <h3>Generate Reports</h3>
+            <p>Generate various reports for analysis.</p>
+            <p><a class="btn btn-primary" href="@Url.Action("OrderReport", "AdminReport")">Generate Reports &raquo;</a></p>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,71 @@
+﻿@model List<WebApplication1.Models.Orderbook>
+
+@{ ViewBag.Title = "Order Report"; }
+
+<h2>Order Report</h2>
+
+<div class="row">
+    <div class="col-md-6">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Order ID</th>
+                    <th>Customer ID</th>
+                    <th>Order Date</th>
+                    <th>Total Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var order in Model)
+                {
+    <tr>
+        <td>@order.OrderID</td>
+        <td>@order.CustomerID</td>
+        <td>@order.OrderDate.ToString("yyyy-MM-dd")</td>
+        <td>@order.TotalAmount</td>
+    </tr>}
+            </tbody>
+        </table>
+    </div>
+    <div class="col-md-6">
+        <canvas id="orderChart" width="400" height="200"></canvas>
+    </div>
+</div>
+
+@section scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+    <script>
+        var orderDates = [];
+        var totalAmounts = [];
+        @foreach (var order in Model)
+        {
+            <text>orderDates.push('@order.OrderDate.ToString("yyyy-MM-dd")');</text>
+            <text>totalAmounts.push('@order.TotalAmount');</text>
+        }
+
+        var ctx = document.getElementById('orderChart').getContext('2d');
+        var orderChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: orderDates,
+                datasets: [{
+                    label: 'Total Amount',
+                    data: totalAmounts,
+                    backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1,
+                    lineTension: 0.1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+    </script>
+}

@@ -1,0 +1,23 @@
+﻿@model WebApplication1.Models.Customer
+
+@{ ViewBag.Title = "Customer Details"; }
+
+<h2>Customer Details</h2>
+
+<div>
+    <h4>Customer ID: @Model.CustomerID</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>First Name:</dt>
+        <dd>@Model.FirstName</dd>
+        <dt>Last Name:</dt>
+        <dd>@Model.LastName</dd>
+        <dt>Email:</dt>
+        <dd>@Model.Email</dd>
+        <dt>Created At:</dt>
+        <dd>@Model.CreatedAt.ToString("yyyy-MM-dd HH:mm:ss")</dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>

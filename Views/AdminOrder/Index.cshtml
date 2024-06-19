@@ -1,0 +1,27 @@
+﻿@model List<WebApplication1.Models.Orderbook>
+
+@{ ViewBag.Title = "Manage Orders"; }
+
+<h2>Manage Orders</h2>
+
+<table class="table">
+    <tr>
+        <th>Order ID</th>
+        <th>Customer ID</th>
+        <th>Order Date</th>
+        <th>Total Amount</th>
+        <th>Action</th>
+    </tr>
+    @foreach (var order in Model)
+    {
+<tr>
+    <td>@order.OrderID</td>
+    <td>@order.CustomerID</td>
+    <td>@order.OrderDate.ToShortDateString()</td>
+    <td>@order.TotalAmount.ToString("C")</td>
+    <td>
+        @Html.ActionLink("Details", "Details", new { id = order.OrderID }) |
+        @Html.ActionLink("Delete", "Delete", new { id = order.OrderID })
+    </td>
+</tr>}
+</table>
